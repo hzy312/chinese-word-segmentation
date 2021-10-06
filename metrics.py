@@ -12,9 +12,8 @@ def evaluate(gold, prediction):
     gold_size = len(gold)
     pred_size = len(prediction)
     right_size = len([x for x in prediction if x in gold])
-
-    precesion = right_size / pred_size
+    precision = right_size / pred_size
     recall = right_size / gold_size
-    f1 = (2 * precesion * recall) / (precesion + recall)
+    f1 = 0 if precision + recall == 0 else (2 * precision * recall) / (precision + recall)
 
-    return precesion, recall, f1
+    return precision, recall, f1
